@@ -61,13 +61,13 @@ namespace CrudProdutos.Repositories
         {
             var query = @"
                          SELECT ID, NOME, PRECO, QUANTIDADE, DATAHORACADASTRO, DATAHORAULTIMAALTERACAO
-                            FROM PRODUTOS
+                            FROM PRODUTO
                             WHERE NOME LIKE @NOME
                             ORDER BY NOME ASC
                         ";
             using (var connection = new SqlConnection(AppSetting.GetConnectionString()))
             {
-                return connection.Query<Produto>(query, new { @NOME = $"%{nome}%" }).ToList();
+                return connection.Query<Produto>(query, new { @Nome = $"%{nome}%" }).ToList();
             }
         }
 
